@@ -20,12 +20,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Extract tag version
-        id: vars
+      - name: Set TAG_VERSION
+        id: set_tag
         run: |
-          # echo "TAG_VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
-          echo "TAG_VERSION is ${GITHUB_REF#refs/tags/}"
-          echo "tag is $tag"
+          if [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
+            echo "TAG_VERSION=${{ github.event.inputs.tag }}" >> $GITHUB_ENV
+          else
+            echo "TAG_VERSION=${GITHUB_REF##*/}" >> $GITHUB_ENV
+          fi
+
+      - name: Use TAG_VERSION
+        run: |
+          echo "The tag version is $TAG_VERSION"
           
       # - name: Checkout repository at specific tag
       #   uses: actions/checkout@v4
