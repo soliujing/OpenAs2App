@@ -56,8 +56,8 @@ jobs:
         run: |
           # Define your custom mapping here
           declare -A IMAGE_MAP=(
-            [openas2]=${{ secrets.DOCKERHUB_USERNAME }}/openas2
-            [openas2_webui]=${{ secrets.DOCKERHUB_USERNAME }}/openas2_webui
+            [openas2app-openas2]=${{ secrets.DOCKERHUB_USERNAME }}/openas2
+            [openas2app-openas2_webui]=${{ secrets.DOCKERHUB_USERNAME }}/openas2_webui
           )
 
           for service in "${!IMAGE_MAP[@]}"; do
