@@ -36,7 +36,7 @@ jobs:
       - name: Checkout repository at specific tag
         uses: actions/checkout@v4
         with:
-          ref: $TAG_VERSION
+          ref: "$TAG_VERSION"
 
       - name: Log in to Docker Hub
         uses: docker/login-action@v3
