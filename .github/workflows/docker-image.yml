@@ -63,10 +63,10 @@ jobs:
           for service in "${!IMAGE_MAP[@]}"; do
             full_image_name=${IMAGE_MAP[$service]}
 
-            echo "Tagging $service as $full_image_name:${{ TAG_VERSION }} and $full_image_name:latest"
+            echo "Tagging $service as $full_image_name:$TAG_VERSION and $full_image_name:latest"
 
-            docker tag $service $full_image_name:${{ TAG_VERSION }}
-            docker push $full_image_name:${{ TAG_VERSION }}
+            docker tag $service $full_image_name:$TAG_VERSION
+            docker push $full_image_name:$TAG_VERSION
 
             docker tag $service $full_image_name:latest
             docker push $full_image_name:latest
