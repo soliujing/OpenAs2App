@@ -36,6 +36,7 @@ jobs:
       - name: Checkout repository at specific tag
         uses: actions/checkout@v4
         with:
+          repository: OpenAS2/OpenAs2App
           ref: "${{ env.TAG_VERSION }}"
 
       - name: Log in to Docker Hub
